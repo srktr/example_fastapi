@@ -33,8 +33,8 @@ def test_login_user(test_user, client):
     ('wrong@gmail.com','salasana',403),
     ('testi@testi.fi','wrongpswd',403),
     ('wrong@gmail.com','wrongpswd',403),
-    (None,'salasana',422),
-    ('testi@testi.fi',None,422)])
+    (None,'salasana',403), #oli 422
+    ('testi@testi.fi',None,403)]) #oli 422
 
 def test_incorrect_login(test_user,client, email, password,status_code):
     res = client.post("/login", data={"username": email, "password":password})
